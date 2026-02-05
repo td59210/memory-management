@@ -24,14 +24,32 @@ public:
 		return arr[idx];
 	}
 
+	int& operator[](int idx) {
+		return arr[idx];
+	}
+
 };
 
 int main() {
+
+	vec v = vec(100);
+	for (int i = 0; i < 100; i++) { //with op over
+		//v.at(i) = i;
+		v[i] = i;
+	}
+
+	for (int i = 0; i < 100; i++) { //with opp over
+		cout << v[i] << endl;
+	}
 
 	cout << "Point A" << endl;
 	{
 		vec v1 = vec(100);
 		v1.at(99) = 12673;
+		//v1[99] = 12312; //operator not defined
+
+		//for (int x : v1) {}
+		//for each loops won't work
 
 		cout << v1.at(99) << endl;
 		cout << "Point B" << endl;
@@ -44,7 +62,9 @@ int main() {
 		(*v2).at(99) = 12673;
 
 		cout << v2->at(99) << endl;
-		//arrow operator is a derefrence + pointer
+		//arrow operator is a derefrence + dot operator 
+
+		delete v2;
 
 	}
 
@@ -56,7 +76,7 @@ int main() {
 	cout << ptr << endl; //gives location at heap (large number)
 	cout << *ptr << endl; //gives value stored at that space
 
-	delete ptr;
+	delete ptr; 
 	//deallocate the space pointed to by ptr
 
 	//cout << ptr << endl; 
@@ -72,14 +92,14 @@ int main() {
 
 	int* arr = new int[size]; //asking for size of given array
 
-	for (int i = 0, i < size, i++) {
+	for (int i = 0; i < size; i++) {
 		*(arr + i) = i;
 		//arr[i] = i; <-- same thing
 
 	}
 
 
-	for (int i = 0, i < size, i++) {
+	for (int i = 0; i < size; i++) {
 		cout << arr[i] << endl;
 
 	}
